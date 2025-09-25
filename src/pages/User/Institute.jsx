@@ -4,7 +4,7 @@ import "../../styles/citizen.css"
 const Institute = () => {
   return (
     <div>
-      <center><h1 className="text-white my-4">Institute Form</h1></center>
+      <center><h1 className="my-4">Institute Form</h1></center>
       <div style={{ padding: "10px 10px" }}>
         <div className="container my-2 bg-light py-5" style={{ borderRadius: "30px" }} id="CitizenForm">
           <form className="row g-3 py-1 px-3">
@@ -18,6 +18,9 @@ const Institute = () => {
             </div>
             <div className="col-md-6">
               <label htmlFor="InputNIC" className="form-label">Person's NIC Number</label>
+              <input type="text" className="form-control" id="InputNIC" required />
+            </div><div className="col-md-6">
+              <label htmlFor="InputNIC" className="form-label">Division</label>
               <input type="text" className="form-control" id="InputNIC" required />
             </div>
             <div className="col-md-6">

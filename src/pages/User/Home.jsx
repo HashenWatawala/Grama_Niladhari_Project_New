@@ -144,7 +144,7 @@ const Home = () => {
                   >
                     <div
                       style={{
-                        backgroundColor: "#fff",
+                        backgroundColor: "#ffffffff",
                         padding: "20px",
                         borderRadius: "10px",
                         width: "90%",
