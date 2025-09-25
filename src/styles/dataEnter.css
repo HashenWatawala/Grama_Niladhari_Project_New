@@ -1,0 +1,18 @@
+.EnterForm{
+    padding: 20px 20px;
+    border-style: solid;
+}
+h1{
+    padding-top: 20px;
+    font-family: Inria Sans;
+}
+.btnMy{
+    background-color: black;
+}
+.btn{
+    border-radius: 20px;
+    width: 100px;
+}
+label{
+    font-family: Inria Sans;
+}
