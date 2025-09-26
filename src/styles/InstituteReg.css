@@ -1,0 +1,106 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Page Background */
+.page-container {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url("../assets/wallpaperflare.com_wallpaper (21).jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.emblem {
+  background-image: url("../assets/emblem.jpg");
+  background-size: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100px;
+  height: 100px;
+}
+
+.heading {
+  flex: 1;
+  text-align: center;
+  background-image: linear-gradient(to right, #2C598D, #0C1827);
+  padding: 20px;
+}
+
+.heading-text {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+/* Body Section */
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.title {
+  color: white;
+  font-size: 28px;
+  margin-bottom: -100px;
+  text-align: center;
+}
+
+/* Glassmorphism Login Box */
+.loginbox {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 20px;
+  padding: 30px;
+  width: 90%;
+  max-width: 450px;
+  color: white;
+
+}
+
+/* Form */
+label {
+  color: white;
+  font-weight: 500;
+}
+
+.form-control {
+  margin-bottom: 15px;
+  border-radius: 8px;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btnMy {
+  min-width: 90px;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
