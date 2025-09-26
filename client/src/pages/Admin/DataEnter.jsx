@@ -8,15 +8,15 @@ const DataEnter = () => {
       <div className="container EnterForm">
         <form className="row g-3 container-fluid">
           <div className="col-md-6">
-            <label htmlFor="inputDivisional" className="form-label">Division and divisional office</label>
-            <input type="text" className="form-control" id="inputDivisional" />
+            <label htmlFor="inputDivisional" className="form-label text-dark">Division and divisional office</label>
+            <input type="text" className="form-control DivisionOffice" id="inputDivisional" />
           </div>
           <div className="col-md-6">
-            <label htmlFor="inputGDivision" className="form-label">Grama Niladhari Division and Number</label>
-            <input type="text" className="form-control" id="inputGDivision" />
+            <label htmlFor="inputGDivision" className="form-label text-dark">Grama Niladhari Division and Number</label>
+            <input type="text" className="form-control Division" id="inputGDivision" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputKnown" className="form-label">State</label>
+            <label htmlFor="inputKnown" className="form-label text-dark">State</label>
             <select id="inputKnown" className="form-select">
               <option value="" disabled selected hidden>Yes or No</option>
               <option>Yes</option>
@@ -24,11 +24,11 @@ const DataEnter = () => {
             </select>
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputTime" className="form-label">If so since when</label>
+            <label htmlFor="inputTime" className="form-label text-dark">If so since when</label>
             <input type="text" className="form-control" id="inputTime" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputGender" className="form-label">State</label>
+            <label htmlFor="inputGender" className="form-label text-dark">State</label>
             <select id="inputGender" className="form-select">
               <option value="" disabled selected hidden>Male or Female</option>
               <option value="1">Male</option>
@@ -36,19 +36,19 @@ const DataEnter = () => {
             </select>
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputAge" className="form-label">Age</label>
+            <label htmlFor="inputAge" className="form-label text-dark">Age</label>
             <input type="number" className="form-control" id="inputAge" />
           </div>
           <div className="col-3">
-            <label htmlFor="inputName" className="form-label">Applicant's full name</label>
+            <label htmlFor="inputName" className="form-label text-dark">Applicant's full name</label>
             <input type="text" className="form-control" id="inputName" placeholder="1234 Main St" />
           </div>
           <div className="col-3">
-            <label htmlFor="inputAddress" className="form-label">Applicant's address</label>
+            <label htmlFor="inputAddress" className="form-label text-dark">Applicant's address</label>
             <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputCivil" className="form-label">Civil status</label>
+            <label htmlFor="inputCivil" className="form-label text-dark">Civil status</label>
             <select id="inputCivil" className="form-select">
               <option value="" disabled selected hidden>Married or Single</option>
               <option value="1">Married</option>
@@ -56,7 +56,7 @@ const DataEnter = () => {
             </select>
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputReligion" className="form-label">Religion</label>
+            <label htmlFor="inputReligion" className="form-label text-dark">Religion</label>
             <select id="inputReligion" className="form-select">
               <option value="" disabled selected hidden>Select religion</option>
               <option value="1">Buddhism</option>
@@ -66,7 +66,7 @@ const DataEnter = () => {
             </select>
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputisSriLankan" className="form-label">Is Sri Lankan</label>
+            <label htmlFor="inputisSriLankan" className="form-label text-dark">Is Sri Lankan</label>
             <select id="inputisSriLankan" className="form-select">
               <option value="" disabled selected hidden>Yes or No</option>
               <option value="1">Yes</option>
@@ -74,39 +74,39 @@ const DataEnter = () => {
             </select>
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputOccupation" className="form-label">Present Occupation</label>
+            <label htmlFor="inputOccupation" className="form-label text-dark">Present Occupation</label>
             <input type="text" className="form-control" id="inputOccupation" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputVillage" className="form-label">Period of residence in village</label>
+            <label htmlFor="inputVillage" className="form-label text-dark">Period of residence in village</label>
             <input type="text" className="form-control" id="inputVillage" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputDivision" className="form-label">Period of residence in division</label>
+            <label htmlFor="inputDivision" className="form-label text-dark">Period of residence in division</label>
             <input type="text" className="form-control" id="inputDivision" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputNIC" className="form-label">NIC Number</label>
+            <label htmlFor="inputNIC" className="form-label text-dark">NIC Number</label>
             <input type="text" className="form-control" id="inputNIC" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputIdIssue" className="form-label">NIC Issue date</label>
+            <label htmlFor="inputIdIssue" className="form-label text-dark">NIC Issue date</label>
             <input type="date" className="form-control" id="inputIdIssue" />
           </div>
           <div className="col-3">
-            <label htmlFor="inputFName" className="form-label">Father's name</label>
+            <label htmlFor="inputFName" className="form-label text-dark">Father's name</label>
             <input type="text" className="form-control" id="inputFName" placeholder="" />
           </div>
           <div className="col-3">
-            <label htmlFor="inputFAddres" className="form-label">Father's address</label>
+            <label htmlFor="inputFAddres" className="form-label text-dark">Father's address</label>
             <input type="text" className="form-control" id="inputFAddres" placeholder="1234 Main Street" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputEvidance" className="form-label">Evidence for residence</label>
+            <label htmlFor="inputEvidance" className="form-label text-dark">Evidence for residence</label>
             <input type="text" className="form-control" id="inputEvidance" />
           </div>
           <div className="col-md-3">
-            <label htmlFor="inputCovicted" className="form-label">Convicted by court of law</label>
+            <label htmlFor="inputCovicted" className="form-label text-dark">Convicted by court of law</label>
             <select id="inputCovicted" className="form-select">
               <option value="" disabled selected hidden>Yes or No</option>
               <option value="1">Yes</option>
@@ -114,27 +114,27 @@ const DataEnter = () => {
             </select>
           </div>
           <div className="col-6">
-            <label htmlFor="inputWorks" className="form-label">Community works</label>
+            <label htmlFor="inputWorks" className="form-label text-dark">Community works</label>
             <input type="text" className="form-control" id="inputWorks" placeholder="About Community works..." />
           </div>
           <div className="col-md-4">
-            <label htmlFor="inputCharacter" className="form-label">His/Her Character</label>
+            <label htmlFor="inputCharacter" className="form-label text-dark">His/Her Character</label>
             <input type="text" className="form-control" id="inputCharacter" />
           </div>
           <div className="col-md-4">
-            <label htmlFor="inputOther" className="form-label">Other Information</label>
+            <label htmlFor="inputOther" className="form-label text-dark">Other Information</label>
             <input type="text" className="form-control" id="inputOther" />
           </div>
           <div className="col-md-4">
-            <label htmlFor="inputEmail" className="form-label">Applicant's email</label>
+            <label htmlFor="inputEmail" className="form-label text-dark">Applicant's email</label>
             <input type="email" className="form-control" id="inputEmail" />
           </div>
           <div className="col-md-6">
-            <label htmlFor="inputElectoral" className="form-label">Electoral register details</label>
+            <label htmlFor="inputElectoral" className="form-label text-dark">Electoral register details</label>
             <input type="text" className="form-control" id="inputElectoral" />
           </div>
           <div className="col-md-6">
-            <label htmlFor="inputSignature" className="form-label">Upload png of signature</label>
+            <label htmlFor="inputSignature" className="form-label text-dark">Upload png of signature</label>
             <input type="file" className="form-control" id="inputSignature" />
           </div>
         </form>
