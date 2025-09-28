@@ -5,17 +5,15 @@
 }
 #heading{
     text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    background-image: linear-gradient(to right,#2C598D ,#0C1827);
-    font-weight: 700;
+    padding: 15px 15px;
+    font-size: 48px;
+    background-image: linear-gradient(to right,#2C598D ,#0C1827);;
 }
 #Emblem{
     background-image: url("../assets/emblem.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100px;
-    height: 100px;
 }
 .NewBody{
     background-image: url("../assets/wallpaperflare.com_wallpaper (21).jpg");
@@ -28,10 +26,8 @@
 .loginbox{
     width: 50%;
     margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-content: center;
+    position: center;
     background-color: rgba(255, 255, 255, 0.238);
     padding-left: 70px;
     padding-right: 70px;
@@ -40,33 +36,25 @@
     border-radius: 20px;
     margin-top: 10vh;
 }
-.btn{
-    background-color: black;
-}
-.heading1{
-    font-family: Inria Sans;
-}
 .heading2{
     padding-top: 50px;
     font-family: Inter;
 }
-Link{
+.heading1{
+    font-family: Inria Sans;
+}
+a{
     color: white;
     text-decoration: none;
 }
 @media screen and (min-width: 768px) {
-
-    .loginbox{
-        width: 600px;
+    .loginbox {
+      width: 600px;
     }
-    
     #Emblem{
         width: 100px;
     }
     #heading{
         flex: 1;
-    }
-    .btn{
-        width: 150px;
     }
   }

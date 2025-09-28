@@ -1,5 +1,6 @@
-import React from 'react'
-import "../../styles/adminPage.css"
+import React from 'react';
+import { Link } from 'react-router-dom';
+import "../../styles/adminPage.css";
 
 const SelectWork = () => {
   return (
@@ -15,11 +16,11 @@ const SelectWork = () => {
     <div className="NewBody">
         <h1 className="text-white heading2 text-center">Select Corresponding Work</h1>
         <div className="loginbox text-white text-center">
-            <button type="button" className="btn btn-dark my-3"><a href="Forms/DataEnter.html">Register Person</a></button>
-            <button type="button" className="btn btn-dark my-3"><a href="Forms/InstituteRegistration.html">Register Institute</a></button>
-            <button type="button" className="btn btn-dark my-3"><a href="Tables/Table1.html">Personal Request</a></button>
-            <button type="button" className="btn btn-dark my-3"><a href="Tables/Table2.html">Institute Request</a></button>
-            <button type="button" className="btn btn-dark my-3"><a href="GramaNiladhariLogin.html">Log out</a></button>
+            <button type="button" className="btn btn-dark my-3"><Link to="/admin/DataEnter" >Register Person</Link></button>
+            <button type="button" className="btn btn-dark my-3"><Link to="/admin/InstituteReg" >Register Institute</Link></button>
+            <button type="button" className="btn btn-dark my-3"><Link>Personal Request</Link></button>
+            <button type="button" className="btn btn-dark my-3"><Link>Institute Request</Link></button>
+            <button type="button" className="btn btn-dark my-3"><Link>Log out</Link></button>
         </div>
     </div>
     </div>
