@@ -7,6 +7,7 @@ require('dotenv').config();
 const connectDB = require('./db');
 
 const certificateRoutes = require('./routes/certificateRoutes');
+const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
 connectDB();
@@ -15,6 +16,8 @@ connectDB();
 app.use(cors());
 app.use(express.json()); // for JSON bodies (not used by multer route, but useful)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+app.use("/api/admin", adminRoutes);
 
 // routes
 app.use('/api/certificates', certificateRoutes);
