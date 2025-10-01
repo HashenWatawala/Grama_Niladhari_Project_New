@@ -6,6 +6,7 @@ import SelectWork from './pages/Admin/SelectWork';
 import DataEnter from './pages/Admin/DataEnter';
 import InstituteReg from './pages/Admin/InstituteReg';
 import AdminLogin from './pages/Admin/AdminLogin';
+import CitizenRequest from './pages/Admin/CitizenRequest';
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
         <Route path="/admin/DataEnter" element={<DataEnter/>} />
         <Route path="/admin/InstituteReg" element={<InstituteReg/>} />
         <Route path="/admin" element={<AdminLogin/>} />
+        <Route path="/admin/CitizenRequest" element={<CitizenRequest/>} />
 
 
         <Route path="/" element={<Home/>} />
