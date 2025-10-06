@@ -34,3 +34,16 @@ exports.getCertificates = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getCertificateByNic = async (req, res) => {
+  try {
+    const { nic } = req.params;
+    const cert = await Certificate.findOne({ nic });
+    if (!cert) {
+      return res.status(404).json({ error: 'Certificate not found' });
+    }
+    res.json(cert);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
