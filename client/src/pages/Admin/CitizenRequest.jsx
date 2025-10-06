@@ -22,7 +22,9 @@ const CitizenRequest = () => {
 
   const handleIssue = async (nicNumber) => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/certificates/${nicNumber}`);
+      const res = await axios.get(
+        `http://localhost:5000/api/certificates/${nicNumber}`
+      );
       setCertificateData(res.data);
       setShowModal(true);
     } catch (err) {
@@ -56,7 +58,12 @@ const CitizenRequest = () => {
                 <td>{req.nicNumber}</td>
                 <td>{req.reason}</td>
                 <td>
-                  <button className="btn btn-dark" onClick={() => handleIssue(req.nicNumber)}>Issue</button>
+                  <button
+                    className="btn btn-dark"
+                    onClick={() => handleIssue(req.nicNumber)}
+                  >
+                    Issue
+                  </button>
                 </td>
               </tr>
             ))
@@ -66,19 +73,53 @@ const CitizenRequest = () => {
 
       {/* Modal */}
       {showModal && (
-        <div className="modal fade show d-block" tabIndex="-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
           <div className="modal-dialog modal-lg">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">Certificate Data</h5>
-                <button type="button" className="btn-close" onClick={() => setShowModal(false)}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  onClick={() => setShowModal(false)}
+                ></button>
               </div>
               <div className="modal-body">
                 <DataEnter certificateData={certificateData} />
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Close</button>
-                <button type="button" className="btn btn-primary" onClick={() => { alert('Certificate Issued!'); setShowModal(false); }}>Send</button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={() => setShowModal(false)}
+                >
+                  Close
+                </button>
+                <button 
+  type="button" 
+  className="btn btn-primary"
+  onClick={async () => {
+    try {
+      await axios.post("http://localhost:5000/api/email/send", {
+        to: certificateData.email,
+        subject: "Your Citizen Certificate",
+        certificateData  // send entire object
+      });
+      alert("Certificate PDF Sent!");
+      setShowModal(false);
+    } catch (err) {
+      console.error("Error sending email:", err);
+      alert("Failed to send email.");
+    }
+  }}
+>
+  Send
+</button>
+
               </div>
             </div>
           </div>

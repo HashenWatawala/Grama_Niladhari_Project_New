@@ -10,9 +10,11 @@ const certificateRoutes = require('./routes/certificateRoutes');
 const adminRoutes = require("./routes/adminRoutes");
 const instituteRoutes = require("./routes/instituteRoutes");
 const citizenRoutes = require("./routes/citizenRoutes");
+const emailRoutes = require("./routes/emailRoutes");
 
 
 const app = express();
+
 connectDB();
 
 // middlewares
@@ -26,6 +28,7 @@ app.use("/api/admin", adminRoutes);
 app.use('/api/certificates', certificateRoutes);
 app.use("/api/institutes", instituteRoutes);
 app.use("/api/citizen", citizenRoutes); 
+app.use("/api/email", emailRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
