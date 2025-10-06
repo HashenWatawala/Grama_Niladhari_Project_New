@@ -3,34 +3,48 @@ const router = express.Router();
 const CitizenRequest = require("../models/CitizenRequest");
 const Admin = require("../models/Admin");
 
-// Submit citizen request
+// POST /api/citizen/request - Submit a citizen request
 router.post("/request", async (req, res) => {
   try {
     const { nicNumber, gDivision, reason } = req.body;
 
-    // Save request
-    const newRequest = new CitizenRequest({ nicNumber, gDivision, reason });
+    if (!nicNumber || !gDivision || !reason) {
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const newRequest = new CitizenRequest({
+      nicNumber,
+      gDivision,
+      reason,
+    });
+
     await newRequest.save();
 
     res.status(201).json({ message: "Request submitted successfully" });
-  } catch (error) {
-    res.status(500).json({ error: "Failed to submit request" });
+  } catch (err) {
+    console.error("Error submitting request:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
-// Get requests for an admin (filter by admin's division)
+// GET /api/citizen/requests/:adminId - Get requests for admin's gDivision
 router.get("/requests/:adminId", async (req, res) => {
   try {
-    const admin = await Admin.findById(req.params.adminId);
+    const { adminId } = req.params;
+    console.log("AdminId from URL:", adminId);
 
-    if (!admin) {
-      return res.status(404).json({ error: "Admin not found" });
-    }
+    const admin = await Admin.findById(adminId);
+    console.log("Admin from DB:", admin);
+
+    if (!admin) return res.status(404).json({ error: "Admin not found" });
 
     const requests = await CitizenRequest.find({ gDivision: admin.gDivision });
+    console.log("Requests fetched:", requests);
+
     res.json(requests);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch requests" });
+  } catch (err) {
+    console.error("Server error:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
