@@ -3,6 +3,8 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 const PDFDocument = require("pdfkit");
 const { Buffer } = require("buffer");
+const PdfPrinter = require('pdfmake');
+const fs = require('fs');
 
 router.post("/send", async (req, res) => {
   const { to, subject, certificateData } = req.body;
@@ -40,14 +42,15 @@ router.post("/send", async (req, res) => {
       res.json({ success: true, message: "Email with PDF sent successfully!" });
     });
 
-    // ========== PDF DESIGN ==========
-    // Border
+    // ================= PDF DESIGN =================
     const pageWidth = doc.page.width;
     const pageHeight = doc.page.height;
-    doc.rect(20, 20, pageWidth - 40, pageHeight - 40).stroke("#003366");
+
+    // Border
+    doc.rect(20, 20, pageWidth - 40, pageHeight - 40).stroke("#2E86C1");
 
     // Header
-    doc.fontSize(22).fillColor("#003366").text("Citizen Character Certificate", { align: "center" });
+    doc.fontSize(22).fillColor("#2E86C1").text("Citizen Character Certificate", { align: "center" });
     doc.moveDown(0.5);
     doc.fontSize(12).fillColor("black").text("Issued by Grama Niladhari Division", { align: "center" });
     doc.moveDown(1);
@@ -56,61 +59,61 @@ router.post("/send", async (req, res) => {
     doc.fontSize(10).text(`Issued Date: ${new Date().toLocaleDateString()}`, { align: "right" });
     doc.moveDown(1);
 
-    // Function to render sections
-    const renderSection = (title, fields) => {
-      doc.moveDown(0.5);
-      doc.rect(doc.x, doc.y, pageWidth - 100, fields.length * 18 + 25).stroke("#003366"); // box border
-      doc.fontSize(14).fillColor("#003366").text(` ${title}`, doc.x + 5, doc.y + 5);
-      doc.moveDown(1.2);
+    // Function to render form-style fields
+    const renderField = (label, value, width = 250, height = 30) => {
+      const startX = doc.x;
+      const startY = doc.y;
 
-      doc.fontSize(11).fillColor("black");
-      fields.forEach(f => {
-        doc.text(`${f.label}: `, { continued: true, width: 200 })
-           .fillColor("#555555").text(f.value || "-", { align: "left" })
-           .fillColor("black");
+      // Label
+      doc.fontSize(9).fillColor("#2E86C1").text(label, startX, startY);
+      doc.moveDown(0.2);
+
+      // Box
+      doc.rect(startX, doc.y, width, height).stroke("#2E86C1");
+
+      // Value inside box
+      doc.fontSize(11).fillColor("black").text(value || "-", startX + 5, doc.y + 8, {
+        width: width - 10,
+        ellipsis: true,
       });
-      doc.moveDown(0.5);
+
+      doc.moveDown(1.5);
     };
 
-    // Sections
-    renderSection("Personal Information", [
-      { label: "Full Name", value: certificateData.fullName },
-      { label: "NIC Number", value: certificateData.nic },
-      { label: "NIC Issue Date", value: new Date(certificateData.nicIssueDate).toLocaleDateString() },
-      { label: "Age", value: certificateData.age },
-      { label: "Gender", value: certificateData.gender },
-      { label: "Civil Status", value: certificateData.civilStatus },
-      { label: "Religion", value: certificateData.religion },
-      { label: "Nationality", value: certificateData.isSriLankan },
-    ]);
+    // Personal Information
+    renderField("Full Name", certificateData.fullName);
+    renderField("NIC Number", certificateData.nic);
+    renderField("NIC Issue Date", new Date(certificateData.nicIssueDate).toLocaleDateString());
+    renderField("Age", certificateData.age);
+    renderField("Gender", certificateData.gender);
+    renderField("Civil Status", certificateData.civilStatus);
+    renderField("Religion", certificateData.religion);
+    renderField("Nationality", certificateData.isSriLankan);
 
-    renderSection("Residence & Family", [
-      { label: "Address", value: certificateData.address },
-      { label: "Father Name", value: certificateData.fatherName },
-      { label: "Father Address", value: certificateData.fatherAddress },
-    ]);
+    // Residence & Family
+    renderField("Address", certificateData.address, 400);
+    renderField("Father Name", certificateData.fatherName);
+    renderField("Father Address", certificateData.fatherAddress, 400);
 
-    renderSection("Division & Occupation", [
-      { label: "Occupation", value: certificateData.occupation },
-      { label: "Division Office", value: certificateData.divisionOffice },
-      { label: "Grama Division", value: certificateData.gDivision },
-      { label: "Resident Period", value: certificateData.residentPeriod },
-      { label: "Division Period", value: certificateData.divisionPeriod },
-    ]);
+    // Division & Occupation
+    renderField("Occupation", certificateData.occupation);
+    renderField("Division Office", certificateData.divisionOffice);
+    renderField("Grama Division", certificateData.gDivision);
+    renderField("Resident Period", certificateData.residentPeriod);
+    renderField("Division Period", certificateData.divisionPeriod);
 
-    renderSection("Character & Evidence", [
-      { label: "Known by Grama Niladhari", value: certificateData.known },
-      { label: "Known Since", value: certificateData.knownSince },
-      { label: "Evidence Provided", value: certificateData.evidence },
-      { label: "Convicted of Crimes", value: certificateData.convicted },
-      { label: "Community Works", value: certificateData.communityWorks },
-      { label: "Character Assessment", value: certificateData.character },
-      { label: "Other Information", value: certificateData.otherInfo },
-    ]);
+    // Character & Evidence
+    renderField("Known by Grama Niladhari", certificateData.known);
+    renderField("Known Since", certificateData.knownSince);
+    renderField("Evidence Provided", certificateData.evidence);
+    renderField("Convicted of Crimes", certificateData.convicted);
+    renderField("Community Works", certificateData.communityWorks);
+    renderField("Character Assessment", certificateData.character);
+    renderField("Other Information", certificateData.otherInfo, 400);
 
     // Footer
     doc.moveDown(2);
-    doc.fontSize(10).fillColor("gray").text(
+    doc.fontSize(9).fillColor("gray").text(
       "This certificate is system-generated and valid without a physical signature.\n" +
       "Issued under the authority of the Grama Niladhari Division.",
       { align: "center", italic: true }
