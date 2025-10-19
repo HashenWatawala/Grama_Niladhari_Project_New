@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const { createCertificate, getCertificates } = require('../controllers/certificateController');
+const { createCertificate, getCertificates, getCertificateByNic } = require('../controllers/certificateController');
 
 // multer storage
 const storage = multer.diskStorage({
@@ -28,5 +28,6 @@ const upload = multer({ storage, fileFilter, limits: { fileSize: 2 * 1024 * 1024
 
 router.post('/', upload.single('signature'), createCertificate);
 router.get('/', getCertificates);
+router.get('/:nic', getCertificateByNic);
 
 module.exports = router;

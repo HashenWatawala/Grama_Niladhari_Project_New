@@ -1,9 +1,9 @@
 // client/src/pages/DataEnter.jsx
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import axios from "axios";
 import "../../styles/dataEnter.css";
 
-const DataEnter = () => {
+const DataEnter = ({ certificateData }) => {
   const formRef = useRef(null);
 
   const handleSubmit = async (e) => {
@@ -21,6 +21,21 @@ const DataEnter = () => {
       alert("Error saving data. See console.");
     }
   };
+
+  useEffect(() => {
+    if (certificateData && formRef.current) {
+      const form = formRef.current;
+      Object.keys(certificateData).forEach(key => {
+        if (form.elements[key]) {
+          if (key === 'nicIssueDate' && certificateData[key]) {
+            form.elements[key].value = new Date(certificateData[key]).toISOString().split('T')[0];
+          } else {
+            form.elements[key].value = certificateData[key];
+          }
+        }
+      });
+    }
+  }, [certificateData]);
 
   return (
     <div>

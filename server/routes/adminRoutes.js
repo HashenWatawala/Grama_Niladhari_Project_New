@@ -2,10 +2,41 @@ const express = require("express");
 const router = express.Router();
 const Admin = require("../models/Admin"); // your Admin schema
 
+// POST /register - Register a new admin
+router.post("/register", async (req, res) => {
+  try {
+    const { Registration_Number, Password, gDivision } = req.body;
+
+    if (!Registration_Number || !Password || !gDivision) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Check if admin already exists
+    const existingAdmin = await Admin.findOne({ Registration_Number });
+    if (existingAdmin) {
+      return res.status(400).json({ message: "Admin already exists" });
+    }
+
+    const newAdmin = new Admin({
+      Registration_Number,
+      Password,
+      gDivision,
+    });
+
+    await newAdmin.save();
+
+    res.status(201).json({ message: "Admin registered successfully" });
+  } catch (err) {
+    console.error("Error registering admin:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 // POST login
 router.post("/login", async (req, res) => {
   try {
     const { Registration_Number, Password } = req.body;
+
 
     // find admin by registration number
     const admin = await Admin.findOne({ Registration_Number });
