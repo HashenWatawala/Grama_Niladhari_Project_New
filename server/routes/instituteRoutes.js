@@ -3,6 +3,17 @@ const router = express.Router();
 const Institute = require("../models/Institute");
 const InstituteRequest = require("../models/InstituteRequest");
 
+router.get("/requests/:adminId", async (req, res) => {
+  try {
+    // Fetch all institute requests (adminId is not used in filtering as the model does not include admin reference)
+    const requests = await InstituteRequest.find();
+    res.json(requests);
+  } catch (err) {
+    console.error("Error fetching requests:", err);
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 router.post("/request", async (req, res) => {
   try {
     const { regNumber, secretCode, nicNumber, gDivision, reason } = req.body;

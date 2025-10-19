@@ -19,7 +19,7 @@ const SelectWork = () => {
             <button type="button" className="btn btn-dark my-3"><Link to="/admin/DataEnter" >Register Person</Link></button>
             <button type="button" className="btn btn-dark my-3"><Link to="/admin/InstituteReg" >Register Institute</Link></button>
             <button type="button" className="btn btn-dark my-3"><Link to="/admin/CitizenRequest" >Personal Request</Link></button>
-            <button type="button" className="btn btn-dark my-3"><Link>Institute Request</Link></button>
+            <button type="button" className="btn btn-dark my-3"><Link to="/admin/InstituteRequest" >Institute Request</Link></button>
             <button type="button" className="btn btn-dark my-3"><Link>Log out</Link></button>
         </div>
     </div>
