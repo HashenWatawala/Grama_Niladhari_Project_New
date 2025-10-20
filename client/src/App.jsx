@@ -8,18 +8,19 @@ import InstituteReg from './pages/Admin/InstituteReg';
 import AdminLogin from './pages/Admin/AdminLogin';
 import CitizenRequest from './pages/Admin/CitizenRequest';
 import InstituteRequest from './pages/Admin/InstituteRequest';
+import ProtectedRoute from './components/ProtectedRoute';
 
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/admin/SelectWork" element={<SelectWork/>} />
-        <Route path="/admin/DataEnter" element={<DataEnter/>} />
+        <Route path="/admin/SelectWork" element={<ProtectedRoute><SelectWork/></ProtectedRoute>} />
+        <Route path="/admin/DataEnter" element={<ProtectedRoute><DataEnter/></ProtectedRoute>} />
         <Route path="/admin/InstituteReg" element={<InstituteReg/>} />
         <Route path="/admin" element={<AdminLogin/>} />
-        <Route path="/admin/CitizenRequest" element={<CitizenRequest/>} />
-        <Route path="/admin/InstituteRequest" element={<InstituteRequest/>} />
+        <Route path="/admin/CitizenRequest" element={<ProtectedRoute><CitizenRequest/></ProtectedRoute>} />
+        <Route path="/admin/InstituteRequest" element={<ProtectedRoute><InstituteRequest/></ProtectedRoute>} />
 
 
         <Route path="/" element={<Home/>} />
