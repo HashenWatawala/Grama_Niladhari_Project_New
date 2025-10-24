@@ -1,9 +1,43 @@
 const express = require("express");
 const router = express.Router();
+const multer = require('multer');
 const Admin = require("../models/Admin"); // your Admin schema
+
+const upload = multer({ dest: 'uploads/' });
 
 // POST /register - Register a new admin
 router.post("/register", async (req, res) => {
+  try {
+    const { Registration_Number, Password, gDivision, signature } = req.body;
+
+    if (!Registration_Number || !Password || !gDivision || !signature) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    // Check if admin already exists
+    const existingAdmin = await Admin.findOne({ Registration_Number });
+    if (existingAdmin) {
+      return res.status(400).json({ message: "Admin already exists" });
+    }
+
+    const newAdmin = new Admin({
+      Registration_Number,
+      Password,
+      gDivision,
+      signature
+    });
+
+    await newAdmin.save();
+
+    res.status(201).json({ message: "Admin registered successfully" });
+  } catch (err) {
+    console.error("Error registering admin:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// POST /adminSignIn - Register a new admin (alias for register)
+router.post("/adminSignIn", upload.single('signature'), async (req, res) => {
   try {
     const { Registration_Number, Password, gDivision } = req.body;
 
@@ -21,6 +55,7 @@ router.post("/register", async (req, res) => {
       Registration_Number,
       Password,
       gDivision,
+      signature: req.file ? req.file.path : null,
     });
 
     await newAdmin.save();

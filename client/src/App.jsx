@@ -9,6 +9,7 @@ import AdminLogin from './pages/Admin/AdminLogin';
 import CitizenRequest from './pages/Admin/CitizenRequest';
 import InstituteRequest from './pages/Admin/InstituteRequest';
 import ProtectedRoute from './components/ProtectedRoute';
+import AdminSignIn from './pages/Admin/AdminSignIn';
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/admin/DataEnter" element={<ProtectedRoute><DataEnter/></ProtectedRoute>} />
         <Route path="/admin/InstituteReg" element={<InstituteReg/>} />
         <Route path="/admin" element={<AdminLogin/>} />
+        <Route path='/admin/adminSignIn' element={<AdminSignIn/>} />
         <Route path="/admin/CitizenRequest" element={<ProtectedRoute><CitizenRequest/></ProtectedRoute>} />
         <Route path="/admin/InstituteRequest" element={<ProtectedRoute><InstituteRequest/></ProtectedRoute>} />
 
