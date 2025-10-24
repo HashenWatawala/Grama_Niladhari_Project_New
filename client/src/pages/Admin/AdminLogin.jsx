@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import '../../styles/login.css';
+import "../../styles/login.css";
+import emblem from "../../assets/emblem.png";
 
 const AdminLogin = () => {
   const [regNumber, setRegNumber] = useState("");
@@ -17,69 +18,61 @@ const AdminLogin = () => {
       });
 
       alert(res.data.message);
-      console.log("Logged-in Admin:", res.data.admin);
-
-      // you can save to localStorage/sessionStorage if needed
       localStorage.setItem("admin", JSON.stringify(res.data.admin));
-
-      // redirect to dashboard
       window.location.href = "/admin/SelectWork";
-
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     }
   };
 
   return (
-    <div>
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col-2" id="Emblem"></div>
-          <div className="col-10" id="heading">
-            <h1 className="heading1 text-white">GRAMA NILADHARI E-CERTIFICATION</h1>
-          </div>
-        </div>
+    <div className="admin-login-page">
+      {/* Header */}
+      <div className="header-container">
+        <div className="emblem" style={{ backgroundImage: `url(${emblem})` }}></div>
+        <h1 className="heading-text">GRAMA NILADHARI E-CERTIFICATION</h1>
       </div>
 
-      <div className="NewBody">
-        <h1 className="text-white heading2" style={{ textAlign: "center" }}>
-          Grama Niladhari Login
-        </h1>
-        <div className="loginbox text-white">
-          <form onSubmit={handleSubmit}>
-            <div className="row mb-5">
-              <label htmlFor="inputRNumber" className="col-md-6 col-form-label">
-                Registration No.
-              </label>
-              <div className="col-md-6">
+      {/* Background */}
+      <div className="background">
+        <div className="login-section">
+          <h2 className="admin-title animate-fade-down">Admin Login</h2>
+
+          <div className="login-card animate-fade-up">
+            <form onSubmit={handleSubmit}>
+              <div className="form-group mb-4">
+                <label htmlFor="inputRNumber" className="form-label text-white">
+                  Registration No.
+                </label>
                 <input
                   type="text"
-                  className="form-control"
+                  className="form-control input-style"
                   id="inputRNumber"
                   value={regNumber}
                   onChange={(e) => setRegNumber(e.target.value)}
                 />
               </div>
-            </div>
-            <div className="row mb-5">
-              <label htmlFor="inputPassword3" className="col-md-6 col-form-label">
-                Password
-              </label>
-              <div className="col-md-6">
+
+              <div className="form-group mb-4">
+                <label htmlFor="inputPassword3" className="form-label text-white">
+                  Password
+                </label>
                 <input
                   type="password"
-                  className="form-control"
+                  className="form-control input-style"
                   id="inputPassword3"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
-            </div>
-            {error && <p className="text-danger text-center">{error}</p>}
-            <button type="submit" className="btn btn-dark d-block mx-auto">
-              Sign in
-            </button>
-          </form>
+
+              {error && <p className="text-danger text-center">{error}</p>}
+
+              <button type="submit" className="btn-login">
+                Sign In
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
