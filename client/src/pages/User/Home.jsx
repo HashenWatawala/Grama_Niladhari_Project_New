@@ -79,7 +79,7 @@ const Home = () => {
               backgroundImage: `url(${colombo})`,
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              paddingTop: "100px",
+              paddingTop: "50px",
               paddingBottom: "50px",
             }}
           >
@@ -102,7 +102,7 @@ const Home = () => {
           {/* Action Buttons */}
           <div
             className="col-md"
-            style={{ backgroundImage: "linear-gradient(#0A021E, #000000)" }}
+            style={{ backgroundImage: "linear-gradient(#0A021E, #000000)", marginBottom: "-100px" }}
           >
             <center>
               <div className="container Select">

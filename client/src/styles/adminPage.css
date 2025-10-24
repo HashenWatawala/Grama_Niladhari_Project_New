@@ -44,6 +44,7 @@ html, body {
   font-weight: 700;
   color: white;
   text-shadow: 0 0 10px rgba(255,255,255,0.4);
+
 }
 
 /* Center Content */
@@ -60,6 +61,9 @@ html, body {
   font-family: "Inter", sans-serif;
   color: white;
   text-shadow: 0 0 15px rgba(255,255,255,0.5);
+  margin-top: -50px;
+  display: inline-block;
+  margin-bottom: -100px;
 }
 
 /* Glassmorphism Box */
@@ -108,7 +112,9 @@ html, body {
   background: linear-gradient(to right, #ff4d4d, #d63031);
   transform: scale(1.05);
 }
-
+.loginbox{
+  display: inline-block;
+}
 /* Animations */
 @keyframes popUp {
   from {

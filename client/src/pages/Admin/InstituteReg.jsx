@@ -101,7 +101,6 @@ const InstituteReg = () => {
             <div className="button-group">
               <button type="submit" className="btn btn-enter">Enter</button>
               <button type="reset" className="btn btn-clear">Clear</button>
-              <a href="javascript:history.back()" className="btn btn-back">Back</a>
             </div>
           </form>
         </div>
