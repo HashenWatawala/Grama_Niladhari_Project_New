@@ -2,11 +2,21 @@ const express = require("express");
 const router = express.Router();
 const Institute = require("../models/Institute");
 const InstituteRequest = require("../models/InstituteRequest");
+const Admin = require("../models/Admin");
 
 router.get("/requests/:adminId", async (req, res) => {
   try {
-    // Fetch all institute requests (adminId is not used in filtering as the model does not include admin reference)
-    const requests = await InstituteRequest.find();
+    const { adminId } = req.params;
+    console.log("AdminId from URL:", adminId);
+
+    const admin = await Admin.findById(adminId);
+    console.log("Admin from DB:", admin);
+
+    if (!admin) return res.status(404).json({ error: "Admin not found" });
+
+    const requests = await InstituteRequest.find({ gDivision: admin.gDivision });
+    console.log("Institute Requests fetched:", requests);
+
     res.json(requests);
   } catch (err) {
     console.error("Error fetching requests:", err);

@@ -165,6 +165,29 @@ html, body {
   cursor: not-allowed;
 }
 
+/* Sign In Link */
+.signin-link {
+  margin-top: 15px;
+}
+
+.btn-signin {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #28a745, #20c997);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-signin:hover {
+  background: linear-gradient(135deg, #20c997, #28a745);
+  transform: translateY(-2px);
+}
+
 /* Animations */
 @keyframes floatEmblem {
   0%, 100% { transform: translateY(0); }

@@ -95,6 +95,16 @@ const AdminLogin = () => {
                 {isLoading ? "Logging in..." : "Login"}
               </button>
             </form>
+
+            <div className="signin-link">
+              <button
+                type="button"
+                className="btn-signin"
+                onClick={() => (window.location.href = "/admin/adminsignin")}
+              >
+                Sign In
+              </button>
+            </div>
           </div>
         </div>
       </main>

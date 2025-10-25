@@ -32,7 +32,7 @@ const AdminSignIn = () => {
       });
 
       alert(res.data.message);
-      window.location.href = "/admin/login";
+      window.location.href = "/admin";
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {
