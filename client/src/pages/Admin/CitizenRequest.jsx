@@ -55,7 +55,7 @@ const CitizenRequest = () => {
               requests.map((req, index) => (
                 <tr
                   key={req._id}
-                  className="fade-row"
+                  className="fade-row text-dark"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <td>{req._id}</td>

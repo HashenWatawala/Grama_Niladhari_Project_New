@@ -55,7 +55,7 @@ const InstituteReg = () => {
               <input
                 type="text"
                 id="name"
-                className="form-control"
+                className="form-control text-dark"
                 value={formData.name}
                 onChange={handleChange}
                 required
