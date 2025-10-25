@@ -2,11 +2,37 @@ const express = require("express");
 const router = express.Router();
 const nodemailer = require("nodemailer");
 const puppeteer = require("puppeteer");
+const Admin = require("../models/Admin");
+const fs = require("fs");
+const path = require("path");
 
 router.post("/send", async (req, res) => {
-  const { to, subject, certificateData } = req.body;
+  const { to, subject, certificateData, adminId } = req.body;
 
   try {
+    // Fetch admin signature
+    const admin = await Admin.findById(adminId);
+    if (!admin) {
+      return res.status(404).json({ success: false, error: "Admin not found" });
+    }
+    let signatureDataUrl = null;
+    if (admin.signature) {
+      // admin.signature is stored as the full path from multer (e.g., 'uploads/filename.png')
+      const signaturePath = path.join(__dirname, '..', admin.signature);
+      console.log('Looking for signature at:', signaturePath);
+      if (fs.existsSync(signaturePath)) {
+        const imageBuffer = fs.readFileSync(signaturePath);
+        const base64Image = imageBuffer.toString('base64');
+        const mimeType = path.extname(admin.signature).toLowerCase() === '.png' ? 'image/png' : 'image/jpeg';
+        signatureDataUrl = `data:${mimeType};base64,${base64Image}`;
+        console.log('Signature found and converted to base64');
+      } else {
+        console.log('Signature file not found at:', signaturePath);
+      }
+    } else {
+      console.log('Admin has no signature field');
+    }
+
     // ================= PUPPETEER PDF GENERATION =================
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -116,7 +142,7 @@ router.post("/send", async (req, res) => {
             (1) දිස්ත්‍රික්කය හා ප්‍රාදේශීය ලේකම් කොට්ඨාසය<br />
             (a) District and Divisional Secretary’s Division
           </div>
-          <div class="value">${certificateData.division || ""}</div>
+          <div class="value">${certificateData.divisionOffice || ""}</div>
         </div>
 
         <div class="row">
@@ -181,6 +207,7 @@ router.post("/send", async (req, res) => {
       </div>
 
       <div class="footer">
+        ${signatureDataUrl ? `<img src="${signatureDataUrl}" alt="Admin Signature" style="width: 150px; height: auto; margin-bottom: 10px;" />` : ''}
         <p>This is a computer-generated document, valid without a physical signature.</p>
       </div>
     </div>

@@ -1,19 +1,42 @@
-.EnterForm{
+/* client/src/styles/dataEnter.css */
+
+.EnterForm {
     padding: 20px 20px;
     border-style: solid;
 }
-h1{
+
+h1 {
     padding-top: 20px;
     font-family: Inria Sans;
 }
-.btnMy{
+
+.btnMy {
     background-color: black;
 }
-.btn{
+
+.btn {
     border-radius: 20px;
     width: 100px;
 }
-label{
+
+label {
     font-family: Inria Sans;
     color: black;
 }
+
+/* Ensure input fields are always visible */
+input, select, textarea {
+    opacity: 1 !important;
+    visibility: visible !important;
+    background-color: white !important;
+    border: 1px solid #ced4da !important;
+    color: #495057 !important;
+}
+
+/* Remove any hover effects that might hide fields */
+input:hover, select:hover, textarea:hover {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Remove popup message on input field hover */
