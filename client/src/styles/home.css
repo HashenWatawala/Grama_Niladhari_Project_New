@@ -32,6 +32,10 @@ body {
 .hero-section {
   animation: fadeIn 2s ease-in-out;
 }
+.fw-bold {
+  font-family: calibri;
+  font-weight: 400 !important;
+}
 
 @keyframes fadeIn {
   from { opacity: 0; }

@@ -18,9 +18,12 @@ h1 {
     border-radius: 20px;
     width: 100px;
 }
+.h3{
+    font-family: calibri;
+}
 
 label {
-    font-family: Inria Sans;
+    font-family: calibri;
     color: black;
 }
 

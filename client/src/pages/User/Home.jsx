@@ -4,6 +4,7 @@ import emblem from "../../assets/emblem.jpg";
 import colombo from "../../assets/colombo.jpg";
 import Citizen from "./Citizen";
 import Institute from "./Institute";
+import "../../styles/home.css";
 
 const Home = () => {
   const [showCitizenPopup, setShowCitizenPopup] = useState(false);
@@ -25,7 +26,7 @@ const Home = () => {
             height: "80px",
           }}
         ></div>
-        <h1 className="flex-grow-1 text-center text-white fw-bold mb-0 fs-4 fs-md-3">
+        <h1 className="flex-grow-1 text-center text-white fw-bold mb-0 fs-9 fs-md-3">
           GRAMA NILADHARI E-CERTIFICATION
         </h1>
       </header>
@@ -52,7 +53,7 @@ const Home = () => {
           >
             <ul className="navbar-nav">
               <li className="nav-item mx-3">
-                <a className="nav-link active text-white fw-semibold" href="#" aria-current="page">
+                <a className="nav-link active text-white fw-semibold" href="#Home" aria-current="page">
                   Home
                 </a>
               </li>
@@ -73,6 +74,7 @@ const Home = () => {
 
       {/* ---------- HERO SECTION ---------- */}
       <section
+        id="Home"
         className="hero-section d-flex align-items-center text-center text-white position-relative"
         style={{
           background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${colombo}) center/cover no-repeat`,
@@ -210,7 +212,7 @@ const Home = () => {
         <footer className="text-center mt-5 pt-4 border-top border-light text-white">
           <ul className="nav justify-content-center mb-3">
             <li className="nav-item">
-              <a href="#" className="nav-link px-3 text-white fw-semibold">
+              <a href="#Home" className="nav-link px-3 text-white fw-semibold">
                 Home
               </a>
             </li>
