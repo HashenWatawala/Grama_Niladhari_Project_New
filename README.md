@@ -1,7 +1,12 @@
 # Grama Niladhari Management System
 
 A comprehensive full-stack web application for managing Grama Niladhari (Village Officer) services in Sri Lanka. This system facilitates administrative tasks, citizen requests, institute registrations, certificate generation, and email notifications.
+User Page - 
+![GramaNildhari User Home](https://github.com/user-attachments/assets/cbdc54ae-aa75-404d-95d6-bd99468b1d72)
 
+Admin Page -
+![adminHome](https://github.com/user-attachments/assets/0db4ade1-2e5a-457b-9973-4c1d2601d3d2)
+ 
 ## Features
 
 - **Admin Management**: Secure admin login and registration system
@@ -266,10 +271,6 @@ Make sure all required environment variables are set in `server/.env`:
 - `EMAIL_USER`: Email address for notifications
 - `EMAIL_PASS`: Email password or app password
 - `JWT_SECRET`: Secret key for JWT tokens
-
-## License
-
-This project is licensed under the ISC License - see the LICENSE file for details.
 
 ## Support
 
