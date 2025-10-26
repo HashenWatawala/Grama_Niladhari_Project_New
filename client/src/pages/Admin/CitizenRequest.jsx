@@ -55,7 +55,7 @@ const CitizenRequest = () => {
               requests.map((req, index) => (
                 <tr
                   key={req._id}
-                  className="fade-row"
+                  className="fade-row text-dark"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <td>{req._id}</td>
@@ -108,11 +108,13 @@ const CitizenRequest = () => {
                   type="button"
                   className="btn btn-primary"
                   onClick={async () => {
+                    const admin = JSON.parse(localStorage.getItem("admin"));
                     try {
                       await axios.post("http://localhost:5000/api/email/send", {
                         to: certificateData.email,
                         subject: "Your Citizen Certificate",
                         certificateData,
+                        adminId: admin.id,
                       });
                       alert("Certificate PDF Sent!");
                       setShowModal(false);
